@@ -10,7 +10,7 @@ import (
 
 type Config struct {
 	Environment Environment `required:"true"`
-	Port        uint        `required:"true"`
+	Port        string      `required:"true"`
 	RateLimit   string      `default:"1000-H"` // default to 1000 requests per hour
 	DSN         string      `required:"true"`
 }

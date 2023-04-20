@@ -60,5 +60,8 @@ func main() {
 	router.POST("/deaths", playerDeathHandler.Insert)
 	router.GET("/deaths/:guid", playerDeathHandler.GetByGuid)
 
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", conf.Port), router))
+	if os.Getenv("PORT") != "" {
+		conf.Port = os.Getenv("PORT")
+	}
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", conf.Port), router))
 }
